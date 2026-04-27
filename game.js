@@ -22,23 +22,39 @@ class BootScene extends Phaser.Scene {
         bg.generateTexture('bg', 800, 600);
         bg.destroy();
 
-        // Player - crash survivor
+        // Player - girl with long brown hair and red dress
         const p = this.make.graphics({ x: 0, y: 0, add: false });
-        p.fillStyle(0xf0c080);             // head
-        p.fillCircle(16, 10, 10);
-        p.fillStyle(0x000000);             // eyes
-        p.fillRect(10, 8, 4, 4);
-        p.fillRect(18, 8, 4, 4);
-        p.fillStyle(0xe67e22);             // shirt
-        p.fillRect(7, 19, 18, 17);
-        p.fillStyle(0x5d4037);             // trousers
-        p.fillRect(7, 35, 7, 10);
-        p.fillRect(17, 35, 7, 10);
-        p.fillStyle(0x3e2723);             // boots
-        p.fillRect(6, 43, 8, 5);
-        p.fillRect(16, 43, 8, 5);
-        p.fillStyle(0x8b6914);             // stick
-        p.fillRect(26, 14, 5, 22);
+        // Long flowing hair (back layer)
+        p.fillStyle(0x5d3a1a);
+        p.fillEllipse(16, 14, 26, 22);     // hair around head
+        p.fillRect(3, 12, 6, 28);          // left strand
+        p.fillRect(23, 12, 6, 28);         // right strand
+        p.fillEllipse(16, 40, 26, 8);      // hair pooling at bottom
+        // Face
+        p.fillStyle(0xf9d5a0);
+        p.fillEllipse(16, 13, 13, 13);
+        // Bangs / hairline on forehead
+        p.fillStyle(0x5d3a1a);
+        p.fillRect(10, 7, 12, 3);
+        p.fillRect(9, 9, 3, 3);
+        p.fillRect(20, 9, 3, 3);
+        // Eyes
+        p.fillStyle(0x000000);
+        p.fillCircle(13, 14, 1.5);
+        p.fillCircle(19, 14, 1.5);
+        // Small frown
+        p.fillRect(14, 18, 4, 1);
+        p.fillRect(13, 19, 1, 1);
+        p.fillRect(18, 19, 1, 1);
+        // Red dress
+        p.fillStyle(0xc0392b);
+        p.fillRect(8, 20, 16, 18);         // torso
+        p.fillRect(5, 21, 4, 9);           // left sleeve
+        p.fillRect(23, 21, 4, 9);          // right sleeve
+        // Legs
+        p.fillStyle(0xf9d5a0);
+        p.fillRect(11, 38, 4, 8);
+        p.fillRect(17, 38, 4, 8);
         p.generateTexture('player', 32, 48);
         p.destroy();
 
@@ -339,7 +355,7 @@ class GameScene extends Phaser.Scene {
         }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10);
 
         // Controls hint at bottom
-        this.add.text(400, 596, 'Arrow Keys / WASD = Move   |   SPACE = Attack with stick', {
+        this.add.text(400, 596, 'Arrow Keys / WASD = Move   |   SPACE = Attack', {
             fontSize: '14px', color: '#ecf0f1',
             fontFamily: 'Arial', stroke: '#000', strokeThickness: 2
         }).setOrigin(0.5, 1).setScrollFactor(0).setDepth(10);
